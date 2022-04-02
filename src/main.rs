@@ -81,12 +81,16 @@ impl Command {
         }
         return queries;
     }
+
+    pub fn print_usage() {
+        print!("{}", USAGE);
+    }
 }
 
 fn main() {
     let args = env::args().collect::<Vec<_>>();
     if args.is_empty() || args.len() == 1 {
-        print!("{}", USAGE);
+        Command::print_usage();
         return;
     }
     let cmd = Command::parse(&args[1..]);
