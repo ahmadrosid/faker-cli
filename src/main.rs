@@ -1,6 +1,7 @@
 use fake::faker::address::raw::ZipCode;
 use fake::faker::internet::raw::{Password, SafeEmail, Username};
-use fake::faker::name::raw::{Name, FirstName, LastName};
+use fake::faker::lorem::raw::Sentence;
+use fake::faker::name::raw::{FirstName, LastName, Name};
 use fake::faker::phone_number::raw::PhoneNumber;
 use fake::locales::EN;
 use fake::Fake;
@@ -31,6 +32,7 @@ Supported attribute.
     - last_name
     - zip_code
     - phone_number
+    - text
 ";
 
 #[derive(Default, Debug)]
@@ -130,9 +132,14 @@ fn main() {
                     let value: String = PhoneNumber(EN).fake();
                     values.push(format!("\"{}\": \"{}\"", q, value));
                 }
+                "text" => {
+                    let value: String = Sentence(EN, 10..90).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
+                }
                 _ => {}
             }
         }
+
         let mut res = String::from("{");
         res.push_str(&values.join(","));
         res.push('}');
