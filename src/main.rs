@@ -26,6 +26,7 @@ Supported attribute.
     - username
     - email
     - password
+    - full_name
     - first_name
     - last_name
     - zip_code
@@ -105,6 +106,11 @@ fn main() {
                 "password" => {
                     let value: String = Password(EN, 6..12).fake();
                     values.push(format!("\"{}\": \"{}\"", q, value));
+                }
+                "full_name" => {
+                    let first: String = FirstName(EN).fake();
+                    let last: String = FirstName(EN).fake();
+                    values.push(format!("\"{}\": \"{} {}\"", q, first, last));
                 }
                 "first_name" => {
                     let value: String = FirstName(EN).fake();
