@@ -14,8 +14,8 @@ OPTION:
     -l --len        Total length
 
 QUERY:
-    Example: \"{ username, email }\"
-    Output: { \"username\": \"jhondoe\", \"email\": \"jhondoe@mail.com\" }
+    Example: "{ username, email }"
+    Output: { "username": "jhondoe", "email": "jhondoe@mail.com" }
 ```
 
 ## Example
