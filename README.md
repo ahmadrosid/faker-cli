@@ -15,7 +15,7 @@ OPTION:
 
 QUERY:
     Example: "{ username, email }"
-    Output: { "username": "jhondoe", "email": "jhondoe@mail.com" }
+    Output: {"username":"jhondoe","email":"jhondoe@mail.com"}
 ```
 
 ## Example
