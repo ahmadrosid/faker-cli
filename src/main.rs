@@ -94,7 +94,7 @@ fn main() {
     }
     let cmd = Command::parse(&args[1..]);
     let queries = cmd.parse_query();
-    for _ in 0..cmd.length {
+    for index in 0..cmd.length {
         let mut values = Vec::new();
         for q in &queries {
             match &q[..] {
@@ -136,6 +136,10 @@ fn main() {
         let mut res = String::from("{");
         res.push_str(&values.join(","));
         res.push('}');
-        println!("{}", res);
+        if index == cmd.length - 1 {
+            print!("{}", res);
+        } else {
+            println!("{}", res);
+        }
     }
 }
