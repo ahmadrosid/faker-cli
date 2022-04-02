@@ -38,7 +38,13 @@ impl Command {
                     cmd.query = arg.to_string();
                 }
                 "-l" | "--len" => {
-                    cmd.length = args.get(index + 1).unwrap().parse().unwrap();
+                    let mut res = 1;
+                    if let Some(data) = args.get(index + 1){
+                        if let Ok(value) = data.parse() {
+                            res = value;
+                        }
+                    }
+                    cmd.length = res;
                 }
                 _ => {}
             }

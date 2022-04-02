@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cargo run -- -l 10 "{ username, email, password }"
+cargo run -- "{ username, email, password }" -l
