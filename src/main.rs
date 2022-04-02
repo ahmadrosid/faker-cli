@@ -1,6 +1,7 @@
-use fake::faker::internet::raw::Password;
-use fake::faker::internet::raw::SafeEmail;
-use fake::faker::internet::raw::Username;
+use fake::faker::name::raw::{FirstName, LastName};
+use fake::faker::internet::raw::{Password, SafeEmail, Username};
+use fake::faker::address::raw::ZipCode;
+use fake::faker::phone_number::raw::PhoneNumber;
 use fake::locales::EN;
 use fake::Fake;
 
@@ -9,7 +10,7 @@ use std::{env, vec};
 const USAGE: &str = "
 faker-cli 0.1.0
 Ahmad Rosid <alahmadrosid@gmail.com>
-Generate fake data from cli.
+Generate fake data.
 
 USAGE:
     faker-cli [OPTION] [QUERY]
@@ -21,6 +22,14 @@ QUERY:
     Example: \"{ username, email }\"
     Output: { \"username\": \"jhondoe\", \"email\": \"jhondoe@mail.com\" }
 
+Supported attribute.
+    - username
+    - email
+    - password
+    - first_name
+    - last_name
+    - zip_code
+    - phone_number
 ";
 
 #[derive(Default, Debug)]
@@ -87,15 +96,31 @@ fn main() {
             match &q[..] {
                 "username" => {
                     let value: String = Username(EN).fake();
-                    values.push(format!("\"username\": \"{}\"", value));
+                    values.push(format!("\"{}\": \"{}\"", q, value));
                 }
                 "email" => {
                     let value: String = SafeEmail(EN).fake();
-                    values.push(format!("\"email\": \"{}\"", value));
+                    values.push(format!("\"{}\": \"{}\"", q, value));
                 }
                 "password" => {
                     let value: String = Password(EN, 6..12).fake();
-                    values.push(format!("\"password\": \"{}\"", value));
+                    values.push(format!("\"{}\": \"{}\"", q, value));
+                }
+                "first_name" => {
+                    let value: String = FirstName(EN).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
+                }
+                "last_name" => {
+                    let value: String = LastName(EN).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
+                }
+                "zip_code" => {
+                    let value: String = ZipCode(EN).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
+                }
+                "phone_number" => {
+                    let value: String = PhoneNumber(EN).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
                 }
                 _ => {}
             }
