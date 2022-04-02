@@ -1,6 +1,6 @@
 use fake::faker::address::raw::ZipCode;
 use fake::faker::internet::raw::{Password, SafeEmail, Username};
-use fake::faker::name::raw::{FirstName, LastName};
+use fake::faker::name::raw::{Name, FirstName, LastName};
 use fake::faker::phone_number::raw::PhoneNumber;
 use fake::locales::EN;
 use fake::Fake;
@@ -108,9 +108,8 @@ fn main() {
                     values.push(format!("\"{}\": \"{}\"", q, value));
                 }
                 "full_name" => {
-                    let first: String = FirstName(EN).fake();
-                    let last: String = FirstName(EN).fake();
-                    values.push(format!("\"{}\": \"{} {}\"", q, first, last));
+                    let value: String = Name(EN).fake();
+                    values.push(format!("\"{}\": \"{}\"", q, value));
                 }
                 "first_name" => {
                     let value: String = FirstName(EN).fake();
