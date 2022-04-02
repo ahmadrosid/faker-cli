@@ -1,6 +1,6 @@
 # faker-cli
 
-Generate fake data from cli.
+Generate fake data from command line.
 
 ```bash
 faker-cli 0.1.0
