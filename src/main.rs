@@ -1,6 +1,6 @@
-use fake::faker::name::raw::{FirstName, LastName};
-use fake::faker::internet::raw::{Password, SafeEmail, Username};
 use fake::faker::address::raw::ZipCode;
+use fake::faker::internet::raw::{Password, SafeEmail, Username};
+use fake::faker::name::raw::{FirstName, LastName};
 use fake::faker::phone_number::raw::PhoneNumber;
 use fake::locales::EN;
 use fake::Fake;
@@ -48,7 +48,7 @@ impl Command {
                 }
                 "-l" | "--len" => {
                     let mut res = 1;
-                    if let Some(data) = args.get(index + 1){
+                    if let Some(data) = args.get(index + 1) {
                         if let Ok(value) = data.parse() {
                             res = value;
                         }
