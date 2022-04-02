@@ -44,7 +44,7 @@ impl Command {
         let mut cmd = Self::default();
         for (index, arg) in args.iter().enumerate() {
             match arg.as_str() {
-                s if s.contains("{") => {
+                s if s.contains('{') => {
                     cmd.query = arg.to_string();
                 }
                 "-l" | "--len" => {
@@ -71,15 +71,14 @@ impl Command {
         let mut queries: Vec<String> = vec![];
         for item in self
             .query
-            .replace("{", "")
-            .replace("}", "")
-            .replace(" ", "")
-            .split(",")
-            .into_iter()
+            .replace('{', "")
+            .replace('}', "")
+            .replace(' ', "")
+            .split(',')
         {
-            queries.push(item.into())
+            queries.push(item.into());
         }
-        return queries;
+        queries
     }
 
     pub fn print_usage() {
@@ -137,6 +136,6 @@ fn main() {
         let mut res = String::from("{");
         res.push_str(&values.join(","));
         res.push('}');
-        println!("{}", res)
+        println!("{}", res);
     }
 }
