@@ -57,7 +57,7 @@ Result
 
 ## Example
 
-You can use this with nodejs to seed you database.
+You can use this with nodejs to seed your database.
 ```js
 const child = require('child_process');
 ...
