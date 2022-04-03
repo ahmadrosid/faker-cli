@@ -16,31 +16,31 @@ impl Query {
         for q in queries {
             match &q[..] {
                 "username" => {
-                    result.push(Self::Username(q))
+                    result.push(Self::Username(q));
                 }
                 "email" => {
-                    result.push(Self::Email(q))
+                    result.push(Self::Email(q));
                 }
                 "password" => {
-                    result.push(Self::Password(q))
+                    result.push(Self::Password(q));
                 }
                 "full_name" => {
-                    result.push(Self::FullName(q))
+                    result.push(Self::FullName(q));
                 }
                 "first_name" => {
-                    result.push(Self::FirstName(q))
+                    result.push(Self::FirstName(q));
                 }
                 "last_name" => {
-                    result.push(Self::LastName(q))
+                    result.push(Self::LastName(q));
                 }
                 "zip_code" => {
-                    result.push(Self::ZipCode(q))
+                    result.push(Self::ZipCode(q));
                 }
                 "phone_number" => {
-                    result.push(Self::PhoneNumber(q))
+                    result.push(Self::PhoneNumber(q));
                 }
                 "text" => {
-                    result.push(Self::Text(q))
+                    result.push(Self::Text(q));
                 }
                 _ => {}
             }

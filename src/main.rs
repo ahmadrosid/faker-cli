@@ -17,6 +17,6 @@ fn main() {
     let queries = Query::parse(
         cmd.parse_query()
     );
-    let generator = Generator{ cmd, queries };
+    let generator = Generator{ queries, cmd };
     generator.generate();
 }
