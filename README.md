@@ -5,7 +5,7 @@ Generate fake data from command line.
 ```bash
 faker-cli 0.1.0
 Ahmad Rosid <alahmadrosid@gmail.com>
-Generate fake data from cli.
+Generate fake data.
 
 USAGE:
     faker-cli [OPTION] [QUERY]
@@ -15,7 +15,18 @@ OPTION:
 
 QUERY:
     Example: "{ username, email }"
-    Output: {"username":"jhondoe","email":"jhondoe@mail.com"}
+    Output:   { "username": "jhondoe", "email": "jhondoe@mail.com" }
+
+Supported data.
+    - username
+    - email
+    - password
+    - full_name
+    - first_name
+    - last_name
+    - zip_code
+    - phone_number
+    - text
 ```
 
 ## Example
