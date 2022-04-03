@@ -12,9 +12,9 @@ OPTION:
 
 QUERY:
     Example: \"{ username, email }\"
-    Output: { \"username\": \"jhondoe\", \"email\": \"jhondoe@mail.com\" }
+    Output:   { \"username\": \"jhondoe\", \"email\": \"jhondoe@mail.com\" }
 
-Supported attribute.
+Supported data.
     - username
     - email
     - password
