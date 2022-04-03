@@ -8,6 +8,7 @@ pub enum Query {
     ZipCode(String),
     PhoneNumber(String),
     Text(String),
+    Undefined
 }
 
 impl Query {
@@ -42,9 +43,50 @@ impl Query {
                 "text" => {
                     result.push(Self::Text(q));
                 }
-                _ => {}
+                _ => {
+                    if q.contains('(') {
+                        let data = q.replace(")", "");
+                        let parsed = data.split("(").collect::<Vec<_>>();
+                        let attr_name = parsed[0];
+                        let attr_type = parsed[1];
+                        result.push(Self::parse_custom_attribute(attr_name.to_string(), attr_type));
+                    }
+                }
             }
         }
         result
+    }
+
+    pub fn parse_custom_attribute(attr_name: String, attr_type: &str) -> Self {
+        match attr_type {
+            "username" => {
+                Self::Username(attr_name)
+            }
+            "email" => {
+                Self::Email(attr_name)
+            }
+            "password" => {
+                Self::Password(attr_name)
+            }
+            "full_name" => {
+                Self::FullName(attr_name)
+            }
+            "first_name" => {
+                Self::FirstName(attr_name)
+            }
+            "last_name" => {
+                Self::LastName(attr_name)
+            }
+            "zip_code" => {
+                Self::ZipCode(attr_name)
+            }
+            "phone_number" => {
+                Self::PhoneNumber(attr_name)
+            }
+            "text" => {
+                Self::Text(attr_name)
+            }
+            _ => Self::Undefined
+        }
     }
 }
