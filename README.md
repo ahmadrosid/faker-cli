@@ -51,5 +51,5 @@ Result
 ```json
 {"my_email": "kaleigh@example.com","nickname": "justus_magnam","kode_pos": "78476","rahasia": "2vU1Rhwikd"}
 {"my_email": "aurelio@example.org","nickname": "cristal_amet","kode_pos": "4804","rahasia": "0yuwCeqYAh"}
-{"my_email": "oswald@example.net","nickname": "janie_id","kode_pos": "01295","rahasia": "vksTmzWlRC0"}%                                                                                         
+{"my_email": "oswald@example.net","nickname": "janie_id","kode_pos": "01295","rahasia": "vksTmzWlRC0"}
 ```
