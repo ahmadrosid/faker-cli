@@ -54,3 +54,29 @@ Result
 {"my_email": "aurelio@example.org","nickname": "cristal_amet","kode_pos": "4804","rahasia": "0yuwCeqYAh"}
 {"my_email": "oswald@example.net","nickname": "janie_id","kode_pos": "01295","rahasia": "vksTmzWlRC0"}
 ```
+
+## Example
+
+You can use this with nodejs to seed you database.
+```js
+const child = require('child_process');
+...
+const cmd = `faker-cli -l 100 "{ username, email }"`;
+child.exec(`${cmd}`, (err, stdout, stderr) => {
+    if (stdout.length > 0) {
+        stdout.split("\n").forEach(item => storeData(item))
+    }
+});
+
+function storeData(data) {
+    db.user.create({
+        data: JSON.parse(data)
+    }).then(res => console.log(res))
+    .catch(err => {})
+}
+```
+
+Or you also can use it for automating curl.
+```bash
+faker-cli -l 100 "{ username, email, password }" | xargs -I % sh -c 'curl -X POST http://localhost:8080/register -d "%s"'
+```
