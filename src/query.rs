@@ -8,14 +8,14 @@ pub enum Query {
     ZipCode(String),
     PhoneNumber(String),
     Text(String),
-    Undefined
+    Undefined(String, String),
 }
 
 impl Query {
     pub fn parse(queries: Vec<String>) -> Vec<Self> {
         let mut result: Vec<Self> = vec![];
         for q in queries {
-            match &q[..] {
+            match &q.replace(" ", "")[..] {
                 "username" => {
                     result.push(Self::Username(q));
                 }
@@ -47,9 +47,9 @@ impl Query {
                     if q.contains('(') {
                         let data = q.replace(")", "");
                         let parsed = data.split("(").collect::<Vec<_>>();
-                        let attr_name = parsed[0];
-                        let attr_type = parsed[1];
-                        result.push(Self::parse_custom_attribute(attr_name.to_string(), attr_type));
+                        let attr_name = parsed[0].replace(" ", "");
+                        let attr_type = parsed[1].trim();
+                        result.push(Self::parse_custom_attribute(attr_name, attr_type));
                     }
                 }
             }
@@ -86,7 +86,7 @@ impl Query {
             "text" => {
                 Self::Text(attr_name)
             }
-            _ => Self::Undefined
+            _ => Self::Undefined(attr_name, attr_type.to_string())
         }
     }
 }

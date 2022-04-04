@@ -55,7 +55,9 @@ impl Generator {
                         let value: String = Sentence(EN, 10..90).fake();
                         values.push(format!("\"{}\": \"{}\"", attr, value));
                     }
-                    Query::Undefined => {}
+                    Query::Undefined(attr,value) => {
+                        values.push(format!("\"{}\": \"{}\"", attr, value));
+                    }
                 }
             }
 

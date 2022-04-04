@@ -66,7 +66,6 @@ impl Command {
             .query
             .replace('{', "")
             .replace('}', "")
-            .replace(' ', "")
             .split(',')
         {
             queries.push(item.into());
