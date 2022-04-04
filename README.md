@@ -45,14 +45,14 @@ Result
 
 Custom attribute name.
 ```bash
-faker-cli -l 3 "{ my_email(email), nickname(username), kode_pos(zip_code), rahasia(password) }"
+faker-cli -l 3 "{ my_email(email), nickname(username), kode_pos(zip_code), rahasia(password), what_ever(1) }"
 ```
 
 Result
 ```json
-{"my_email": "kaleigh@example.com","nickname": "justus_magnam","kode_pos": "78476","rahasia": "2vU1Rhwikd"}
-{"my_email": "aurelio@example.org","nickname": "cristal_amet","kode_pos": "4804","rahasia": "0yuwCeqYAh"}
-{"my_email": "oswald@example.net","nickname": "janie_id","kode_pos": "01295","rahasia": "vksTmzWlRC0"}
+{"my_email": "otis@example.com","nickname": "blaze_autem","kode_pos": "134","rahasia": "Jr9TvZHQ4","what_ever": "1"}
+{"my_email": "petra@example.net","nickname": "tyler_ad","kode_pos": "4718","rahasia": "xCKsOVqYp","what_ever": "1"}
+{"my_email": "jacques@example.org","nickname": "oswald_vel","kode_pos": "3206","rahasia": "BjM8uNGFS5","what_ever": "1"}
 ```
 
 ## Example
