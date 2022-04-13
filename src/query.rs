@@ -59,34 +59,16 @@ impl Query {
 
     pub fn parse_custom_attribute(attr_name: String, attr_type: &str) -> Self {
         match attr_type {
-            "username" => {
-                Self::Username(attr_name)
-            }
-            "email" => {
-                Self::Email(attr_name)
-            }
-            "password" => {
-                Self::Password(attr_name)
-            }
-            "full_name" => {
-                Self::FullName(attr_name)
-            }
-            "first_name" => {
-                Self::FirstName(attr_name)
-            }
-            "last_name" => {
-                Self::LastName(attr_name)
-            }
-            "zip_code" => {
-                Self::ZipCode(attr_name)
-            }
-            "phone_number" => {
-                Self::PhoneNumber(attr_name)
-            }
-            "text" => {
-                Self::Text(attr_name)
-            }
-            _ => Self::Undefined(attr_name, attr_type.to_string())
+            "username" => Self::Username(attr_name),
+            "email" => Self::Email(attr_name),
+            "password" => Self::Password(attr_name),
+            "full_name" => Self::FullName(attr_name),
+            "first_name" => Self::FirstName(attr_name),
+            "last_name" => Self::LastName(attr_name),
+            "zip_code" => Self::ZipCode(attr_name),
+            "phone_number" => Self::PhoneNumber(attr_name),
+            "text" => Self::Text(attr_name),
+            _ => Self::Undefined(attr_name, attr_type.to_string()),
         }
     }
 }

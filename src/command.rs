@@ -1,4 +1,3 @@
-
 const USAGE: &str = "
 faker-cli 0.1.0
 Ahmad Rosid <alahmadrosid@gmail.com>
@@ -9,6 +8,8 @@ USAGE:
 
 OPTION:
     -l --len        Total length
+    -o --output     Output default is JSON, [JSON,SQL]
+    -t --table      Specify the table name for sql output.
 
 QUERY:
     Example: \"{ username, email }\"
@@ -30,6 +31,8 @@ Supported data.
 pub struct Command {
     pub query: String,
     pub length: usize,
+    pub output: String,
+    pub table: String,
 }
 
 impl Command {
@@ -49,6 +52,20 @@ impl Command {
                     }
                     cmd.length = res;
                 }
+                "-t" | "--table" => {
+                    let mut res = "";
+                    if let Some(data) = args.get(index + 1) {
+                        res = data;
+                    }
+                    cmd.table = res.to_string();
+                }
+                "-o" | "--output" => {
+                    let mut res = "json";
+                    if let Some(data) = args.get(index + 1) {
+                        res = data;
+                    }
+                    cmd.output = res.to_uppercase();
+                }
                 _ => {}
             }
         }
@@ -62,15 +79,19 @@ impl Command {
 
     pub fn parse_query(&self) -> Vec<String> {
         let mut queries: Vec<String> = vec![];
-        for item in self
-            .query
-            .replace('{', "")
-            .replace('}', "")
-            .split(',')
-        {
+        for item in self.query.replace('{', "").replace('}', "").split(',') {
             queries.push(item.into());
         }
         queries
+    }
+
+    pub fn validate(&self) -> bool {
+        if !self.output.is_empty() && self.output.contains("SQL") && self.table.is_empty() {
+            println!("Please specify the table for sql output!");
+            return false;
+        }
+
+        true
     }
 
     pub fn print_usage() {
