@@ -13,6 +13,8 @@ USAGE:
 
 OPTION:
     -l --len        Total length
+    -o --output     Output default is JSON, [JSON,SQL]
+    -t --table      Specify the table name for sql output.
 
 QUERY:
     Example: "{ username, email }"
