@@ -78,7 +78,7 @@ function storeData(data) {
 }
 ```
 
-Or you also can use it for automating curl.
+Or you also can use to pipe with curl.
 ```bash
 faker-cli -l 100 "{ username, email, password }" | xargs -I % sh -c 'curl -X POST http://localhost:8080/register -d "%s"'
 ```
